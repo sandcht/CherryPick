@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     name: Cherry pick into ${{ github.event.inputs.Etiquette_2 }}
-    if: github.event.inputs.Etiquette_1 !== github.event.inputs.Etiquette_2
+    if: github.event.inputs.Etiquette_1 != github.event.inputs.Etiquette_2
     steps:
       - name: Checkout
         uses: actions/checkout@v2
