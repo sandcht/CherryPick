@@ -3,7 +3,7 @@ name: Greetings
 on:
   workflow_dispatch:
     inputs:
-      commit:
+      GITHUB_SHA :
         description: 'Commit Number'
         default: ''
         required: true
@@ -41,9 +41,10 @@ jobs:
         with:
           fetch-depth: 0
       - name: Cherry pick into palladium
-        uses: carloscastrojumo/github-cherry-pick-action@v1.0.2
+        uses: sandcht/github-cherry-pick-action@v1.0.0
         with:
           branch: ${{ github.event.inputs.Etiquette_1 }}
+          GITHUB_SHA: ${{ github.event.inputs.GITHUB_SHA }}
           labels: |
             cherry-pick
           reviewers: |
