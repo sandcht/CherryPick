@@ -48,7 +48,7 @@ jobs:
             cherry-pick
           reviewers: |
             aReviewerUser
-    cherry_pick_2:
+  cherry_pick_2:
     runs-on: ubuntu-latest
     permissions: write-all
     name: Cherry pick into ${{ github.event.inputs.Etiquette_2 }}
