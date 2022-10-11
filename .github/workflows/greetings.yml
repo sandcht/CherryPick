@@ -3,12 +3,31 @@ name: Greetings
 on:
   workflow_dispatch:
     inputs:
-      username:
+      commit:
         description: 'Commit Number'
         default: ''
         required: true
         type: string
-
+      Étiquette 1:
+        description: 'Étiquettes'
+        required: true
+        default: 'KRYPTON'
+        type: choice
+        options:
+        - KRYPTON
+        - PHOSPHORE
+        - NICKEL
+        - ARGON
+      Étiquette 2:
+        description: 'Étiquette 2'
+        required: false
+        default: 'KRYPTON'
+        type: choice
+        options:
+        - KRYPTON
+        - PHOSPHORE
+        - NICKEL
+        - ARGON
 jobs:
   greeting:
     runs-on: ubuntu-latest
