@@ -1,17 +1,13 @@
 name: Greetings
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
-      Commit Number:
-        description: 'Log level'
+      username:
+        description: 'Commit Number'
+        default: ''
         required: true
-        default: 'warning'
-        type: choice
-        options:
-        - info
-        - warning
-        - debug
+        type: string
 
 jobs:
   greeting:
