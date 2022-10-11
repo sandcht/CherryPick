@@ -3,34 +3,33 @@ name: Greetings
 on:
   workflow_dispatch:
     inputs:
-      GITHUB_SHA :
-        description: 'Commit Number'
-        default: ''
+      GITHUB_SHA:
+        description: "Commit Number"
+        default: ""
         required: true
         type: string
       Etiquette_1:
-        description: 'Étiquette 1'
+        description: "Étiquette 1"
         required: true
-        default: 'KRYPTON'
+        default: "KRYPTON"
         type: choice
         options:
-        - KRYPTON
-        - PHOSPHORE
-        - NICKEL
-        - ARGON
+          - KRYPTON
+          - PHOSPHORE
+          - NICKEL
+          - ARGON
       Etiquette_2:
-        description: 'Étiquette 2'
+        description: "Étiquette 2"
         required: false
-        default: 'KRYPTON'
+        default: "KRYPTON"
         type: choice
         options:
-        - KRYPTON
-        - PHOSPHORE
-        - NICKEL
-        - ARGON
-        
-jobs:
+          - KRYPTON
+          - PHOSPHORE
+          - NICKEL
+          - ARGON
 
+jobs:
   cherry_pick:
     runs-on: ubuntu-latest
     permissions: write-all
@@ -41,7 +40,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Cherry pick into palladium
-        uses: sandcht/github-cherry-pick-action@v1.0.0
+        uses: sandcht/github-cherry-pick-action@v1.0.1
         with:
           branch: ${{ github.event.inputs.Etiquette_1 }}
           GITHUB_SHA: ${{ github.event.inputs.GITHUB_SHA }}
@@ -51,4 +50,3 @@ jobs:
             aReviewerUser
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
