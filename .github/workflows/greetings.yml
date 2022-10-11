@@ -39,11 +39,31 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - name: Cherry pick into palladium
         uses: sandcht/github-cherry-pick-action@v1.0.1
+
         with:
           branch: ${{ github.event.inputs.Etiquette_1 }}
           GITHUB_SHA: ${{ github.event.inputs.GITHUB_SHA }}
+          labels: |
+            cherry-pick
+          reviewers: |
+            aReviewerUser
+  cherry_pick_2:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    name: Cherry pick into ${{ github.event.inputs.Etiquette_2 }}
+    if: github.event.inputs.Etiquette_1 != github.event.inputs.Etiquette_2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Cherry pick into ${{ github.event.inputs.Etiquette_2 }}
+        uses: sandcht/github-cherry-pick-action@v1.0.0
+        with:
+          branch: ${{ github.event.inputs.Etiquette_2 }}
           labels: |
             cherry-pick
           reviewers: |
