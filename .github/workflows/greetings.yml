@@ -9,7 +9,7 @@ on:
         required: true
         type: string
       Étiquette 1:
-        description: 'Étiquettes'
+        description: 'Étiquette 1'
         required: true
         default: 'KRYPTON'
         type: choice
