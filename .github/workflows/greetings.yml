@@ -8,7 +8,7 @@ on:
         default: ''
         required: true
         type: string
-      Étiquette 1:
+      Etiquette_1:
         description: 'Étiquette 1'
         required: true
         default: 'KRYPTON'
@@ -18,7 +18,7 @@ on:
         - PHOSPHORE
         - NICKEL
         - ARGON
-      Étiquette 2:
+      Etiquette_2:
         description: 'Étiquette 2'
         required: false
         default: 'KRYPTON'
@@ -28,15 +28,26 @@ on:
         - PHOSPHORE
         - NICKEL
         - ARGON
+        
 jobs:
-  greeting:
+
+  cherry_pick:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
+    permissions: write-all
+    name: Cherry pick into ${{ github.event.inputs.Etiquette_1 }}
     steps:
-    - uses: actions/first-interaction@v1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: "Message that will be displayed on users' first issue"
-        pr-message: "Message that will be displayed on users' first pull request"
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Cherry pick into palladium
+        uses: carloscastrojumo/github-cherry-pick-action@v1.0.2
+        with:
+          branch: ${{ github.event.inputs.Etiquette_1 }}
+          labels: |
+            cherry-pick
+          reviewers: |
+            aReviewerUser
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
