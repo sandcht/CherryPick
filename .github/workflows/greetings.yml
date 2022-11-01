@@ -68,3 +68,6 @@ jobs:
           branch: ${{ github.event.inputs.Etiquette_2 }}
           labels: |
             cherry-pick
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
