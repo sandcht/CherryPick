@@ -32,7 +32,9 @@ on:
 jobs:
   cherry_pick:
     runs-on: ubuntu-latest
-    permissions: write-all
+    permissions:
+      contents: read
+      pull-requests: write
     name: Cherry pick into ${{ github.event.inputs.Etiquette_1 }}
     steps:
       - name: Checkout
