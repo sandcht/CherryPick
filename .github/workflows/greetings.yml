@@ -40,7 +40,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Cherry pick into palladium
+      - name: Cherry pick into ${{ github.event.inputs.Etiquette_1 }}
         uses: sandcht/github-cherry-pick-action@v1.0.3
 
         with:
