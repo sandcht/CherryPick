@@ -33,7 +33,7 @@ jobs:
   cherry_pick:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
     name: Cherry pick into ${{ github.event.inputs.Etiquette_1 }}
     steps:
@@ -53,7 +53,7 @@ jobs:
   cherry_pick_2:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
     name: Cherry pick into ${{ github.event.inputs.Etiquette_2 }}
     if: github.event.inputs.Etiquette_1 != github.event.inputs.Etiquette_2
